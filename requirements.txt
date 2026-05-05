@@ -1,0 +1,13 @@
+# Global requirements for all portfolio projects
+watchdog==6.0.0
+PyYAML==6.0.3
+click>=8.0.0
+transformers>=4.30.0
+torch>=2.0.0
+pyperclip>=1.8.0
+fastapi>=0.100.0
+uvicorn>=0.23.0
+python-multipart>=0.0.6
+pdfplumber>=0.10.0
+spacy>=3.6.0
+PyPDF2>=3.0.0

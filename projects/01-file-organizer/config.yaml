@@ -1,0 +1,15 @@
+watch_directory: "D:/Downloads"  # Change to your test folder
+organize_by:
+  Images: [".jpg", ".jpeg", ".png", ".gif", ".bmp"]
+  Documents: [".pdf", ".docx", ".txt", ".md", ".csv"]
+  Code: [".py", ".js", ".html", ".css", ".json", ".yaml"]
+  Archives: [".zip", ".tar", ".gz", ".rar"]
+  Videos: [".mp4", ".mov", ".avi", ".mkv"]
+  
+ignore_files:
+  - ".DS_Store"
+  - "Thumbs.db"
+  
+logging:
+  level: "INFO"
+  max_log_size_mb: 5
