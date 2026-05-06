@@ -10,13 +10,16 @@ class ResumeParser:
     def __init__(self):
         self.nlp = spacy.load("en_core_web_sm")
         
-        # Common skill categories
+        # Comprehensive skill categories
         self.skills_db = {
-            "Python": ["python", "django", "flask", "fastapi", "pandas", "numpy"],
-            "ML/AI": ["machine learning", "deep learning", "tensorflow", "pytorch", "scikit"],
-            "Web": ["javascript", "react", "html", "css", "node.js"],
-            "Database": ["sql", "postgresql", "mongodb", "redis"],
-            "DevOps": ["docker", "kubernetes", "aws", "git", "ci/cd"],
+            "Python Ecosystem": ["python", "django", "flask", "fastapi", "pandas", "numpy", "celery", "sqlalchemy", "pytest", "poetry"],
+            "ML/AI": ["machine learning", "deep learning", "tensorflow", "pytorch", "scikit", "keras", "nlp", "computer vision", "llms", "huggingface", "opencv"],
+            "Web Frontend": ["javascript", "typescript", "react", "html", "css", "vue", "angular", "tailwind", "bootstrap", "next.js"],
+            "Backend Ecosystem": ["node.js", "express", "java", "spring boot", "c#", ".net", "go", "ruby on rails", "php", "graphql"],
+            "Database": ["sql", "postgresql", "mysql", "mongodb", "redis", "elasticsearch", "cassandra", "dynamodb", "sqlite"],
+            "DevOps & Cloud": ["docker", "kubernetes", "aws", "gcp", "azure", "git", "ci/cd", "terraform", "jenkins", "linux", "ansible"],
+            "Data Engineering": ["apache spark", "hadoop", "kafka", "airflow", "snowflake", "bigquery"],
+            "Soft Skills": ["leadership", "agile", "scrum", "problem solving", "communication", "teamwork", "project management"]
         }
     
     def extract_text_from_pdf(self, pdf_path: Path) -> str:
