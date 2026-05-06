@@ -47,9 +47,6 @@ docker-compose up --build
 - **Testing:** pytest, unittest
 - **Logging:** Python logging, loguru
 
-## 📊 GitHub Stats
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=yaswanthhari&show_icons=true&theme=radical)
-
 ## 📫 Connect
 - Portfolio: [yaswanthhariportfolio.vercel.app](https://yaswanthhariportfolio.vercel.app)
 - Email: yaswanth.hari@gmail.com
