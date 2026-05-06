@@ -1,50 +1,63 @@
 import pytest
 import os
-import shutil
+import logging
 from pathlib import Path
 import sys
+
+# Add parent directory to path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from organizer import FileOrganizerHandler, load_config
+from organizer import FileOrganizerHandler
 
 @pytest.fixture
 def setup_test_env(tmp_path):
-    # Setup source and dest directories
     src = tmp_path / "source"
     dest = tmp_path / "dest"
     src.mkdir()
     dest.mkdir()
     
-    # Create a fake config
+    # Mock logger
+    logger = logging.getLogger("TestLogger")
+    
+    # Create config matching organizer.py expectations
     config = {
-        "watch_dir": str(src),
-        "categories": {
+        "watch_directory": str(src),
+        "organize_by": {
             "Images": [".jpg", ".png"],
             "Documents": [".pdf", ".txt"]
-        }
+        },
+        "ignore_files": [".DS_Store", "desktop.ini"]
     }
     
-    # Create handler
-    handler = FileOrganizerHandler(config)
-    
+    handler = FileOrganizerHandler(config, logger)
     yield handler, src, dest
 
-def test_get_category(setup_test_env):
+def test_get_destination_folder(setup_test_env):
     handler, _, _ = setup_test_env
     
-    assert handler._get_category(".jpg") == "Images"
-    assert handler._get_category(".txt") == "Documents"
-    assert handler._get_category(".unknown") == "Others"
+    assert handler.get_destination_folder(".jpg") == "Images"
+    assert handler.get_destination_folder(".txt") == "Documents"
+    assert handler.get_destination_folder(".unknown") == "Others"
 
-def test_resolve_collision(setup_test_env):
-    handler, _, dest = setup_test_env
+def test_organize_file_ignore(setup_test_env):
+    handler, src, _ = setup_test_env
     
-    # Create a file in dest to simulate collision
-    target_file = dest / "test.txt"
-    target_file.touch()
+    ignore_file = src / ".DS_Store"
+    ignore_file.touch()
     
-    # Resolve collision for same name
-    new_path = handler._resolve_collision(target_file)
+    # Shouldn't raise any errors or move anything
+    handler.organize_file(ignore_file)
+    assert ignore_file.exists() # Remains in source
+
+def test_organize_file_move(setup_test_env):
+    handler, src, _ = setup_test_env
     
-    assert new_path.name == "test_1.txt"
-    assert new_path.parent == dest
+    test_file = src / "test.jpg"
+    test_file.touch()
+    
+    handler.organize_file(test_file)
+    
+    # Should be moved to Images folder
+    moved_file = handler.watch_dir / "Images" / "test.jpg"
+    assert moved_file.exists()
+    assert not test_file.exists()
