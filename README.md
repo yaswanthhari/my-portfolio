@@ -48,7 +48,7 @@ docker-compose up --build
 - **Logging:** Python logging, loguru
 
 ## 📊 GitHub Stats
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=yaswanthhari807441&show_icons=true)
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=yaswanthhari&show_icons=true&theme=radical)
 
 ## 📫 Connect
 - Portfolio: [yaswanthhariportfolio.vercel.app](https://yaswanthhariportfolio.vercel.app)
