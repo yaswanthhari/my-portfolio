@@ -1,5 +1,6 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from pathlib import Path
 import shutil
@@ -25,16 +26,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Mount static directory
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 # Initialize parser
 parser = ResumeParser()
 
 @app.get("/")
 async def root():
-    return {
-        "message": "AI Resume Parser API",
-        "endpoints": ["/upload", "/parse", "/health"],
-        "docs": "/docs"
-    }
+    return FileResponse("static/index.html")
 
 @app.get("/health")
 async def health_check():

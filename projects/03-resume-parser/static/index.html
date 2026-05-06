@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Parser</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <main class="container">
+        <header class="header">
+            <h1><i class="fa-solid fa-brain"></i> AI Resume Parser</h1>
+            <p>Upload a PDF resume to instantly extract skills and generate an AI summary.</p>
+        </header>
+
+        <section class="upload-section">
+            <div class="drop-zone" id="drop-zone">
+                <i class="fa-solid fa-cloud-arrow-up drop-icon"></i>
+                <span class="drop-text">Drag & Drop your PDF here</span>
+                <span class="drop-subtext">or click to browse files</span>
+                <input type="file" id="file-input" accept="application/pdf" hidden>
+            </div>
+            <div id="file-info" class="file-info hidden">
+                <i class="fa-solid fa-file-pdf"></i>
+                <span id="file-name">filename.pdf</span>
+                <button id="remove-file" class="icon-btn"><i class="fa-solid fa-times"></i></button>
+            </div>
+            <button id="parse-btn" class="primary-btn" disabled>
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Parse Resume
+            </button>
+        </section>
+
+        <div id="loading" class="loading-state hidden">
+            <div class="spinner"></div>
+            <p>Analyzing resume with NLP...</p>
+        </div>
+
+        <section id="results" class="results-section hidden">
+            <div class="glass-card profile-card">
+                <div class="profile-header">
+                    <div class="avatar"><i class="fa-solid fa-user-tie"></i></div>
+                    <div class="profile-info">
+                        <h2 id="res-name">John Doe</h2>
+                        <div class="contact-info">
+                            <span id="res-email"><i class="fa-solid fa-envelope"></i> email@example.com</span>
+                            <span id="res-phone"><i class="fa-solid fa-phone"></i> 555-0100</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card summary-card">
+                <h3><i class="fa-solid fa-robot"></i> AI Summary</h3>
+                <p id="res-summary">AI summary will appear here.</p>
+            </div>
+
+            <div class="glass-card skills-card">
+                <h3><i class="fa-solid fa-code"></i> Extracted Skills</h3>
+                <div id="res-skills" class="skills-container">
+                    <!-- Skill chips will be injected here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
