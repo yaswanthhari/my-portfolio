@@ -2,7 +2,7 @@
 
 [![Python Version](https://img.shields.io/badge/python-3.9+-blue.svg)](https://python.org)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![GitHub last commit](https://img.shields.io/github/last-commit/yaswanthhari807441/my-portfolio)](https://github.com/yaswanthhari807441/my-portfolio)
+[![GitHub Actions CI](https://github.com/yaswanthhari/my-portfolio/actions/workflows/tests.yml/badge.svg)](https://github.com/yaswanthhari/my-portfolio/actions)
 
 ## 🚀 About Me
 Python Developer with 6 months AI/ML internship experience. I build **production-ready applications** that integrate AI features into real-world tools.
@@ -15,20 +15,30 @@ Python Developer with 6 months AI/ML internship experience. I build **production
 Automatically organizes Downloads folder using file extensions. Features:
 - 🚀 Real-time monitoring with Watchdog
 - 📝 Production-grade logging with rotation
+- 🐳 Fully Dockerized
 - ⚙️ YAML configuration
-- 🐍 Pure Python, no bloat
 
 ### 2. [AI CLI Summarizer](projects/02-ai-cli-tool/)
 Command-line tool that summarizes text/files using Hugging Face models
-- Local AI (no API keys)
-- File & clipboard input
-- Export to markdown
+- 🤖 Local AI (no API keys required)
+- 🐳 Fully Dockerized
+- 📋 File & clipboard input
+- 📄 Export to markdown
 
 ### 3. [FastAPI Resume Parser](projects/03-resume-parser/)
+**Live Demo:** [https://resume-parser-api-blm4.onrender.com](https://resume-parser-api-blm4.onrender.com)
+
 Extract skills and generate summaries from PDF resumes
-- PDF text extraction
-- NLP skill detection
-- REST API + Swagger docs
+- 🧠 NLP skill detection (spaCy)
+- 🎨 Beautiful Glassmorphism Web UI
+- 🚀 REST API + Swagger docs
+- 🐳 Fully Dockerized
+
+## 🐳 Running with Docker
+You can spin up all three projects instantly using Docker Compose:
+```bash
+docker-compose up --build
+```
 
 ## 🛠️ Tech Stack
 - **Backend:** FastAPI, Flask, SQLite, PostgreSQL

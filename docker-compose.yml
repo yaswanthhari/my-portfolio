@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  file-organizer:
+    build: ./projects/01-file-organizer
+    container_name: file-organizer
+    volumes:
+      # Mount host Downloads directory to container's watch_dir
+      # You can change /tmp/downloads to your actual Windows path (e.g., C:/Users/user/Downloads)
+      - /tmp/downloads:/app/watch_dir
+    restart: unless-stopped
+
+  ai-cli-tool:
+    build: ./projects/02-ai-cli-tool
+    container_name: ai-cli-tool
+    # Keeps the container alive so we can attach to it or run commands
+    tty: true 
+    stdin_open: true
+
+  resume-parser-api:
+    build: ./projects/03-resume-parser
+    container_name: resume-parser-api
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
