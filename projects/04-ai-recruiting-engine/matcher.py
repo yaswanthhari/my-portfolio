@@ -1,3 +1,5 @@
+import os
+os.environ['HF_HOME'] = 'D:/huggingface_cache'
 import sqlite3
 from pathlib import Path
 from sentence_transformers import SentenceTransformer, util

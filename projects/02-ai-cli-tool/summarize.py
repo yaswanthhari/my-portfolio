@@ -4,6 +4,8 @@ AI Text Summarizer CLI Tool
 Usage: summarize.py --file notes.txt --length short
 """
 
+import os
+os.environ['HF_HOME'] = 'D:/huggingface_cache'
 import click
 import sys
 from pathlib import Path
