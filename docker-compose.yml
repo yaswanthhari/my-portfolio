@@ -23,3 +23,9 @@ services:
     ports:
       - "8000:8000"
     restart: unless-stopped
+
+  ai-recruiting-engine:
+    build: ./projects/04-ai-recruiting-engine
+    container_name: ai-recruiting-engine
+    tty: true
+    stdin_open: true

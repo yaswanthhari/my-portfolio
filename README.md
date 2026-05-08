@@ -34,8 +34,15 @@ Extract skills and generate summaries from PDF resumes
 - 🚀 REST API + Swagger docs
 - 🐳 Fully Dockerized
 
+### 4. [AI Recruiting Engine](projects/04-ai-recruiting-engine/)
+Automated matchmaking engine that pairs candidates with live job postings.
+- 🧠 Vector similarity matching (sentence-transformers)
+- 📥 Live job scraping (Arbeitnow API)
+- 🗄️ SQLite persistent storage
+- 🐳 Fully Dockerized
+
 ## 🐳 Running with Docker
-You can spin up all three projects instantly using Docker Compose:
+You can spin up all four projects instantly using Docker Compose:
 ```bash
 docker-compose up --build
 ```
